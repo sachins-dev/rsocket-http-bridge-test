@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package payloads.request;
+
+option java_package = "com.sachin.protobuf.payloads.request";
+option java_multiple_files = true;
+
+message SimpleRequest {
+  optional string requestMessage = 1;
+}

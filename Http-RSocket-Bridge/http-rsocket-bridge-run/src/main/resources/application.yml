@@ -1,0 +1,24 @@
+server:
+  port: 8010
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: bridge
+          uri: forward:/rsocket-server/rr
+          predicates:
+            - Path=/rr
+  application:
+    name: http-rsocket-bridge
+
+io.rsocket.broker.client:
+  route-id: 00000000-0000-0000-0000-00000000007
+  service-name: http-rsocket-bridge
+  brokers:
+    - tcp://localhost:9090
+
+logging:
+  level:
+    org.springframework.cloud: debug
+    io.rsocket.broker: trace

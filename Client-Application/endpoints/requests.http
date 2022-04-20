@@ -1,0 +1,22 @@
+POST http://localhost:7100/api/greet
+Content-Type: application/json
+
+{
+  "name": "Sachin"
+}
+
+###
+POST http://localhost:7100/api/greet
+Content-Type: application/json
+
+{
+  "name": ""
+}
+
+###
+POST http://localhost:7100/api/greet
+Content-Type: application/json
+
+{
+  "name": null
+}

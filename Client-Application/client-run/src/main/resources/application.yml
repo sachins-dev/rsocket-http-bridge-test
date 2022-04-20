@@ -1,0 +1,40 @@
+server:
+  port: 7100
+
+#rsocket:
+#  server:
+#    host: localhost
+#    port: 9100
+
+#io.rsocket.broker.client.auto-connect: false
+## Note: (Read below points to run the client gateway without broker server)
+## 1. Uncomment above io.rsocket.broker.client.auto-connect property
+## 2. Comment below properties related to broker client
+#io:
+#  rsocket:
+#    broker:
+#      client:
+#        route-id: 00000000-0000-0000-0000-000000000001
+#        service-name: client-gateway
+#        tags:
+#          INSTANCE_NAME: client-gateway-1
+#        address:
+#          # Note: Not able to figure it out how to provide a route with common root level @MessageMapping annotation
+#          # and different method level @MessageMapping annotation e.g. route of format "simple.rr" where the simple
+#          # is root level route value of @MessageMapping annotation and rr is the route value of method level @MessageMapping annotation
+#          rr:
+#            service_name: rsocket-server
+#        brokers:
+#          # Note: Here we can provide multiple broker uri's to which this gateway can connect to
+#          - tcp://localhost:9010
+
+spring:
+  cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            gateway:
+              - uri: "http://localhost:8010"
+  application:
+    name: client-gateway
